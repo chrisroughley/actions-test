@@ -41,4 +41,5 @@ jobs:
         run: |
           git pull --rebase origin main
           git commit -m "rebase"
+          git push
           git push origin main
