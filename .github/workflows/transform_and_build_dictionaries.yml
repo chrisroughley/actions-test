@@ -3,8 +3,7 @@ name: 'Transform and build dictionaries'
 on:
   push:
     branches:
-      - main
-
+      - test-branch
 
 jobs:
   transform-and-build:
@@ -19,11 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # - name: Setup node
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 16.13.x
-      #     cache: npm
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -47,4 +41,18 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Commit files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Add changes"
+
+      - name: Push code
+        id: git_push
+        run: |
+          git pull --rebase origin main
+          git rebase --skip
+          git push origin main
 
