@@ -53,6 +53,4 @@ jobs:
         id: git_push
         run: |
           git pull --rebase origin main
-          git rebase --skip
           git push origin main
-
