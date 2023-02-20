@@ -1,0 +1,15 @@
+{
+    "name": "design-system-tokens",
+    "version": "1.0.0",
+    "description": "Tokens (typically representing themes) exported from Figma as part of the IW Design System",
+    "dependencies": {
+        "token-transformer": "^0.0.29"
+    },
+    "devDependencies": {
+        "style-dictionary": "^3.7.2"
+    },
+    "scripts": {
+        "build": "style-dictionary build",
+        "transform": "npx token-transformer ./figma/tokens_studio_test.json ./dictionaries/test/tokens/transformed_tokens_test.json "
+    }
+}
