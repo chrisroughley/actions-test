@@ -57,8 +57,8 @@ jobs:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
       #     branch: ${{ github.main }}
       - name: Push code
-          id: git_push
-          run: |
-            git pull --rebase origin main
-            git push origin main 
+        id: git_push
+        run: |
+          git pull --rebase origin main
+          git push origin main 
 
