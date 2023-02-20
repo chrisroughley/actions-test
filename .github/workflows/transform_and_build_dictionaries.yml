@@ -50,14 +50,11 @@ jobs:
           git add .
           git commit -m "Add changes"
 
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: ${{ github.main }}
       - name: Push code
         id: git_push
         run: |
           git pull --rebase origin main
-          git push origin main 
+          git add .github/workflows/transform_and_build_dictionaries.yml
+          rebase --continue
+          git push origin main
 
